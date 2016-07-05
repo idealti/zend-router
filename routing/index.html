@@ -16,7 +16,6 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/zf-web.css" rel="stylesheet">
     <link href="../css/zf.css" rel="stylesheet">
     <link href="../css/prism-zf.css" rel="stylesheet">
 
@@ -126,7 +125,7 @@
 </div>
 
     <!-- content:begin -->
-    <div id="page-top" class="container docs">
+    <div class="container">
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
@@ -172,7 +171,7 @@ Routing can utilize other portions of the request URI or environment as well.
 For example, the host or scheme, query parameters, headers, request method, and
 more.</p>
 <p>The base unit of routing is a <code>Route</code>:</p>
-<pre class="codehilite"><code class="language-php">namespace Zend\Mvc\Router;
+<pre class="codehilite"><code class="language-php">namespace Zend\Router;
 
 use Zend\Stdlib\RequestInterface as Request;
 
@@ -186,7 +185,7 @@ interface RouteInterface
 
 <p>A <code>Route</code> accepts a <code>Request</code>, and determines if it matches. If so, it returns a
 <code>RouteMatch</code> object:</p>
-<pre class="codehilite"><code class="language-php">namespace Zend\Mvc\Router;
+<pre class="codehilite"><code class="language-php">namespace Zend\Router;
 
 class RouteMatch
 {
@@ -212,7 +211,7 @@ $entity = $resource-&gt;get($id);</code></pre>
 <p>Usually you will have multiple routes you wish to test against. In order to
 facilitate this, you will use a route aggregate, usually implementing
 <code>RouteStack</code>:</p>
-<pre class="codehilite"><code class="language-php">namespace Zend\Mvc\Router;
+<pre class="codehilite"><code class="language-php">namespace Zend\Router;
 
 interface RouteStackInterface extends RouteInterface
 {
@@ -272,14 +271,14 @@ third parameter to the <code>addRoute()</code> method, specifying the priority i
 specifications or setting the priority property within a route instance before
 adding it to the route stack.</p>
 <h3 id="treeroutestack">TreeRouteStack</h3>
-<p><code>Zend\Mvc\Router\Http\TreeRouteStack</code> provides the ability to register trees of
+<p><code>Zend\Router\Http\TreeRouteStack</code> provides the ability to register trees of
 routes, and uses a B-tree algorithm to match routes. As such, you register a
 single route with many children.</p>
 <p>A <code>TreeRouteStack</code> will consist of the following configuration:</p>
 <ul>
 <li>A base "route", which describes the base match needed, the root of the tree.</li>
 <li>An optional <code>route_plugins</code>, which is a configured
-  <code>Zend\Mvc\Router\RoutePluginManager</code> that can lazy-load routes.</li>
+  <code>Zend\Router\RoutePluginManager</code> that can lazy-load routes.</li>
 <li>The option <code>may_terminate</code>, which hints to the router that no other segments
   will follow it.</li>
 <li>An optional <code>child_routes</code> array, which contains additional routes that stem
@@ -447,26 +446,26 @@ the additional <a href="#http-routing-examples">examples at the end</a> will pro
 further insight.</p>
 <h3 id="route-plugins">Route plugins</h3>
 <p>In the above example, the <code>$routePlugins</code> is an instance of
-<code>Zend\Mvc\Router\RoutePluginManager</code>, containing essentially the following
+<code>Zend\Router\RoutePluginManager</code>, containing essentially the following
 configuration:</p>
-<pre class="codehilite"><code class="language-php">$routePlugins = new Zend\Mvc\Router\RoutePluginManager();
+<pre class="codehilite"><code class="language-php">$routePlugins = new Zend\Router\RoutePluginManager();
 $plugins = [
-    'hostname' =&gt; 'Zend\Mvc\Router\Http\Hostname',
-    'literal'  =&gt; 'Zend\Mvc\Router\Http\Literal',
-    'part'     =&gt; 'Zend\Mvc\Router\Http\Part',
-    'regex'    =&gt; 'Zend\Mvc\Router\Http\Regex',
-    'scheme'   =&gt; 'Zend\Mvc\Router\Http\Scheme',
-    'segment'  =&gt; 'Zend\Mvc\Router\Http\Segment',
-    'wildcard' =&gt; 'Zend\Mvc\Router\Http\Wildcard',
-    'query'    =&gt; 'Zend\Mvc\Router\Http\Query',
-    'method'   =&gt; 'Zend\Mvc\Router\Http\Method',
+    'hostname' =&gt; 'Zend\Router\Http\Hostname',
+    'literal'  =&gt; 'Zend\Router\Http\Literal',
+    'part'     =&gt; 'Zend\Router\Http\Part',
+    'regex'    =&gt; 'Zend\Router\Http\Regex',
+    'scheme'   =&gt; 'Zend\Router\Http\Scheme',
+    'segment'  =&gt; 'Zend\Router\Http\Segment',
+    'wildcard' =&gt; 'Zend\Router\Http\Wildcard',
+    'query'    =&gt; 'Zend\Router\Http\Query',
+    'method'   =&gt; 'Zend\Router\Http\Method',
 ];
 foreach ($plugins as $name =&gt; $class) {
     $routePlugins-&gt;setInvokableClass($name, $class);
 }</code></pre>
 
 
-<p>When using <code>Zend\Mvc\Router\Http\TreeRouteStack</code>, the <code>RoutePluginManager</code> is
+<p>When using <code>Zend\Router\Http\TreeRouteStack</code>, the <code>RoutePluginManager</code> is
 set up by default, and the developer does not need to worry about autoloading
 of standard HTTP routes.</p>
 </blockquote>
@@ -706,10 +705,10 @@ echo $this-&gt;url('blog/rss'); // gives &quot;/blog/rss&quot;</code></pre>
     'router' =&gt; [
         'routes' =&gt; [
             'modules.zendframework.com' =&gt; [
-                'type' =&gt; 'Zend\Mvc\Router\Http\Hostname',
+                'type' =&gt; 'Zend\Router\Http\Hostname',
                 'options' =&gt; [
                     'route' =&gt; ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
-                    'contraints' =&gt; [
+                    'constraints' =&gt; [
                         '4th' =&gt; 'modules',
                         '3rd' =&gt; '.*?', // optional 3rd level domain such as .ci, .dev or .test
                         '2nd' =&gt; 'zendframework',
@@ -721,12 +720,12 @@ echo $this-&gt;url('blog/rss'); // gives &quot;/blog/rss&quot;</code></pre>
                 // child route controllers may span multiple modules as desired
                 'child_routes' =&gt; [
                     'index' =&gt; [
-                        'type' =&gt; 'Zend\Mvc\Router\Http\Literal',
+                        'type' =&gt; 'Zend\Router\Http\Literal',
                         'options' =&gt; [
                             'route' =&gt; '/',
                             'defaults' =&gt; [
                                 'controller' =&gt; 'Module\Controller\Index',
-                                'action' = &gt; 'index',
+                                'action' =&gt; 'index',
                             ],
                         ],
                         'may_terminate' =&gt; true,
@@ -734,10 +733,10 @@ echo $this-&gt;url('blog/rss'); // gives &quot;/blog/rss&quot;</code></pre>
                 ],
             ],
             'packages.zendframework.com' =&gt; [
-                'type' =&gt; 'Zend\Mvc\Router\Http\Hostname',
+                'type' =&gt; 'Zend\Router\Http\Hostname',
                 'options' =&gt; [
                     'route' =&gt; ':4th.[:3rd.]:2nd.:1st', // domain levels from right to left
-                    'contraints' =&gt; [
+                    'constraints' =&gt; [
                         '4th' =&gt; 'packages',
                         '3rd' =&gt; '.*?', // optional 3rd level domain such as .ci, .dev or .test
                         '2nd' =&gt; 'zendframework',
@@ -749,12 +748,12 @@ echo $this-&gt;url('blog/rss'); // gives &quot;/blog/rss&quot;</code></pre>
                 // child route controllers may span multiple modules as desired
                 'child_routes' =&gt; [
                     'index' =&gt; [
-                        'type' =&gt; 'Zend\Mvc\Router\Http\Literal',
+                        'type' =&gt; 'Zend\Router\Http\Literal',
                         'options' =&gt; [
                             'route' =&gt; '/',
                             'defaults' =&gt; [
                                 'controller' =&gt; 'Package\Controller\Index',
-                                'action' = &gt; 'index',
+                                'action' =&gt; 'index',
                             ],
                         ],
                         'may_terminate' =&gt; true,
@@ -810,49 +809,13 @@ definitions. A common pitfall is to have those two definitions nested in
     </div>
     <!-- content:end -->
 
-    <div id="footerwrap">
-    <div class="container">
-        <div class="row site-map">
-            <div class="col-lg-3">
-              <p>
-                <strong>Zend Framework</strong><br />
-                <a href="http://framework.zend.com/">framework.zend.com</a><br />
-                <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
-                <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
-                <a href="https://apigility.org">apigility.org</a><br />
-              </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 centered">
-                <a class="back-to-top" href="#page-top"><i class="fa fa-chevron-circle-up fa-4" aria-hidden="true"></i></a>
-            </div>
-        </div>
-
-        <div class="spacing"></div>
-
-        <div class="row">
-            <div class="col-lg-8">
-                <h4>Copyright</h4>
-                <div class="hline-w"></div>
-
-                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
-            </div>
-
-            <div class="col-lg-4">
-                <h4>Contacts</h4>
-                <div class="hline-w"></div>
-                <p>
-                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
-                    <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
-                    <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
 
     <script src="../js/jquery-1.10.2.min.js"></script>
     <script src="../js/bootstrap-3.0.3.min.js"></script>
@@ -892,7 +855,7 @@ definitions. A common pitfall is to have those two definitions nested in
     <div class="zf-components">
   <div class="zf-components-grid">
     <div class="zf-logo">
-      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="http://framework.zend.com/images/logos/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
     </div>
 
     <div class="component-list"></div>
@@ -997,7 +960,7 @@ definitions. A common pitfall is to have those two definitions nested in
     // Fetch the component list and display it.
     function loadComponentList () {
       $.ajax({
-        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
+        url: "//zendframework.github.io/zf-mkdoc-theme/scripts/zf-component-list.json",
         dataType: "text json",
         success: parseComponentList,
         error: function (e) {
