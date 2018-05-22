@@ -3,7 +3,7 @@
         {
             "location": "/",
             "text": "zend-router\n\n\n\n\n\n\nzend-router provides flexible HTTP routing.\n\n\nRouting currently works against the \nzend-http\n\nrequest and responses, and provides capabilities around:\n\n\n\n\nLiteral path matches\n\n\nPath segment matches (at path boundaries, and optionally validated using regex)\n\n\nRegular expression path matches\n\n\nHTTP request scheme\n\n\nHTTP request method\n\n\nHostname\n\n\n\n\nAdditionally, it supports combinations of different route types in tree\nstructures, allowing for fast, b-tree lookups.\n\n\n\n\nFile issues at https://github.com/zendframework/zend-router/issues\n\n\nDocumentation is at https://docs.zendframework.com/zend-router",
-            "title": "Home"
+            "title": "zend-router"
         },
         {
             "location": "/#zend-router",
