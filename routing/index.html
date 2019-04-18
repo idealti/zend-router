@@ -11,7 +11,8 @@
 
     <title>Routing - zend-router</title>
 
-    <link rel="stylesheet" href="../css/styles-e95dab66f8.css">
+    <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-router</a>
+            <a href="">zend-router</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-router</a>
+                        <a href="" class="subnavigation__link">zend-router</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Routing</a>
+                        <a href="routing/" class="subnavigation__link">Routing</a>
                     </li>
                 
             
@@ -92,7 +93,7 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/v2-to-v3/" class="subnavigation__link">V2 to V3</a>
+        <a href="migration/v2-to-v3/" class="subnavigation__link">V2 to V3</a>
     </li>
 
                             
@@ -153,6 +154,17 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
@@ -165,7 +177,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-router</a></li>
+            <li><a href="">zend-router</a></li>
 
             
 
@@ -638,7 +650,7 @@ the following examples will show how to set up routes in config files.</p>
 <pre class="codehilite"><code class="language-php">return [
     'router' =&gt; [
         'routes' =&gt; [
-            // Literal route named &quot;home&quot;
+            // Literal route named "home"
             'home' =&gt; [
                 'type' =&gt; 'literal',
                 'options' =&gt; [
@@ -649,7 +661,7 @@ the following examples will show how to set up routes in config files.</p>
                     ],
                 ],
             ],
-            // Literal route named &quot;contact&quot;
+            // Literal route named "contact"
             'contact' =&gt; [
                 'type' =&gt; 'literal',
                 'options' =&gt; [
@@ -668,7 +680,7 @@ the following examples will show how to set up routes in config files.</p>
 <pre class="codehilite"><code class="language-php">return [
     'router' =&gt; [
         'routes' =&gt; [
-            // Literal route named &quot;home&quot;
+            // Literal route named "home"
             'home' =&gt; [
                 'type' =&gt; 'literal',
                 'options' =&gt; [
@@ -679,7 +691,7 @@ the following examples will show how to set up routes in config files.</p>
                     ],
                 ],
             ],
-            // Literal route named &quot;blog&quot;, with child routes
+            // Literal route named "blog", with child routes
             'blog' =&gt; [
                 'type' =&gt; 'literal',
                 'options' =&gt; [
@@ -722,9 +734,9 @@ the following examples will show how to set up routes in config files.</p>
 
 <p>When using child routes, naming of the routes follows the <code>parent/child</code>
 pattern, so to use the child routes from the above example:</p>
-<pre class="codehilite"><code class="language-php">echo $this-&gt;url('blog'); // gives &quot;/blog&quot;
-echo $this-&gt;url('blog/post', ['slug' =&gt; 'my-post']); // gives &quot;/blog/my-post&quot;
-echo $this-&gt;url('blog/rss'); // gives &quot;/blog/rss&quot;</code></pre>
+<pre class="codehilite"><code class="language-php">echo $this-&gt;url('blog'); // gives "/blog"
+echo $this-&gt;url('blog/post', ['slug' =&gt; 'my-post']); // gives "/blog/my-post"
+echo $this-&gt;url('blog/rss'); // gives "/blog/rss"</code></pre>
 
 <h3 id="an-example-with-multiple-hostnames-and-subdomains-within-a-single-application">An example with multiple Hostnames and subdomains within a single application</h3>
 <pre class="codehilite"><code class="language-php">return [
@@ -823,7 +835,7 @@ definitions. A common pitfall is to have those two definitions nested in
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="..">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -832,7 +844,7 @@ definitions. A common pitfall is to have those two definitions nested in
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../migration/v2-to-v3/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="migration/v2-to-v3/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -867,7 +879,7 @@ definitions. A common pitfall is to have those two definitions nested in
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-router</a>
+            <a href="">zend-router</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -876,13 +888,13 @@ definitions. A common pitfall is to have those two definitions nested in
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-router</a>
+                        <a href="" class="subnavigation__link">zend-router</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Routing</a>
+                        <a href="routing/" class="subnavigation__link">Routing</a>
                     </li>
                 
             
@@ -893,7 +905,7 @@ definitions. A common pitfall is to have those two definitions nested in
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/v2-to-v3/" class="subnavigation__link">V2 to V3</a>
+        <a href="migration/v2-to-v3/" class="subnavigation__link">V2 to V3</a>
     </li>
 
                             
@@ -975,9 +987,8 @@ definitions. A common pitfall is to have those two definitions nested in
         var base_url = '..',
             siteName = 'zend-router';
     </script>
-    <script src="../js/scripts-a978f1ec1a.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -1006,6 +1017,14 @@ definitions. A common pitfall is to have those two definitions nested in
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 
