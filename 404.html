@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="zend-router: Flexible routing system for HTTP applications">  
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="shortcut icon" href="//img/favicon.ico">
 
-    <title>V2 to V3 - zend-router - Zend Framework Docs</title>
+    <title>zend-router - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../../css/styles-f3b53f5ceb.css">
+    <link rel="stylesheet" href="//css/styles-f3b53f5ceb.css">
 </head>
 <body id="page-top">
 
@@ -31,7 +31,7 @@
             
             <span class="navbar-brand">
                 <a class="logo-link" href="https://framework.zend.com/" data-tooltip data-placement="bottom" title="Go to the ZF homepage">
-                    <img src="../../img/zend-framework-logo.svg" height="28" alt="Zend Framework">
+                    <img src="//img/zend-framework-logo.svg" height="28" alt="Zend Framework">
                 </a>
             </span>
         </div>
@@ -66,7 +66,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-router</a>
+            <a href="/.">zend-router</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +75,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../.." class="subnavigation__link">zend-router</a>
+                        <a href="/." class="subnavigation__link">zend-router</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../routing/" class="subnavigation__link">Routing</a>
+                        <a href="/routing/" class="subnavigation__link">Routing</a>
                     </li>
                 
             
@@ -91,8 +91,8 @@
                         <ul class="subnavigation__list">
                             
                                 
-    <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">V2 to V3</a>
+    <li class="subnavigation__list-item ">
+        <a href="/migration/v2-to-v3/" class="subnavigation__link">V2 to V3</a>
     </li>
 
                             
@@ -169,121 +169,18 @@
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
-                    <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-    <li><a href="https://framework.zend.com/">Home</a></li>
 
-    
-        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+<h1 class="content__title">404</h1>
+<blockquote>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
+</blockquote>
 
-        
-            <li><a href="../..">zend-router</a></li>
-
-            
-                
-                    <li>Migration</li>
-                
-            
-
-            <li class="active">V2 to V3</li>
-        
-    
-</ol>
+<a href="/" class="btn btn-default" role="button">Go to homepage</a>
 
 
-    
-        <h2 class="chapter__headline">Migration</h2>
-    
-
-    
-    
-
-    
-    
-        <div class="toc">
-            <h6 class="toc__headline">In This Article</h6>
-            <ul class="toc__list">
-                
-                    <li class="toc__entry">
-                        <a href="#query-route-removal" class="toc__link">Query route removal</a>
-                    </li>
-                
-                    <li class="toc__entry">
-                        <a href="#namespace-change" class="toc__link">Namespace change</a>
-                    </li>
-                
-                    <li class="toc__entry">
-                        <a href="#console-routes" class="toc__link">Console routes</a>
-                    </li>
-                
-            </ul>
-        </div>
-    
-
-
-    <h1 id="migrating-from-v2-to-v3">Migrating from v2 to v3</h1>
-<p>zend-router v3 makes a number of changes that may affect your application. This
-document details those changes, and provides suggestions on how to update your
-application to work with v3.</p>
-<h2 id="query-route-removal">Query route removal</h2>
-<p><code>Zend\Mvc\Router\Http\Query</code> was deprecated starting in version 2.3.0. If you
-were using it previously, it no longer exists. Routing based on query strings is
-considered problematic, due to the fact that arbitrary keys may be specified,
-which could potentially lead to nefarious actions such as selection of an
-alternate controller or controller action.</p>
-<p>If you relied on this route, you <em>will</em> need to update your code.</p>
-<h2 id="namespace-change">Namespace change</h2>
-<p>In zend-router v2, the namespace used was <code>Zend\Mvc\Router</code>, as it originated in
-the zend-mvc component. With v3, the namespace was changed to <code>Zend\Router</code>.</p>
-<p>If you were referring to fully qualified class names or the <code>Zend\Mvc\Router</code>
-namespace, you will need to update your code. You can do so by running a script
-such as the following (assumes *nix-based operating system such as Mac OS X or
-Linux):</p>
-<pre class="codehilite"><code class="language-bash">$ for code in $(grep -rl 'Zend.Mvc.Router' .);do
-&gt; sed --in-place -e 's/Zend\\Mvc\\Router/Zend\\Router/g' ${code}
-&gt; done</code></pre>
-
-<p>The above recursively lists files that use the old namespace, and then edits
-them in place to replace the old namespace with the new one.</p>
-<p>(Make sure you don't do this at your project root, as that could also change the
-files under your <code>vendor/</code> tree, which you almost certainly do not want to do!)</p>
-<h2 id="console-routes">Console routes</h2>
-<p>Console routing was removed from zend-router for version 3. If you use console
-routing, you will need to install the new zend-mvc-console package:</p>
-<pre class="codehilite"><code class="language-bash">$ composer require zendframework/zend-mvc-console</code></pre>
-
-
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../routing/">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-router/edit/master/docs/book/migration/v2-to-v3.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             <!-- content:end -->
             </div>
             <div class="col-md-3 col-xs-12 sidebar">
@@ -299,7 +196,7 @@ routing, you will need to install the new zend-mvc-console package:</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-router</a>
+            <a href="/.">zend-router</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -308,13 +205,13 @@ routing, you will need to install the new zend-mvc-console package:</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../.." class="subnavigation__link">zend-router</a>
+                        <a href="/." class="subnavigation__link">zend-router</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../routing/" class="subnavigation__link">Routing</a>
+                        <a href="/routing/" class="subnavigation__link">Routing</a>
                     </li>
                 
             
@@ -324,8 +221,8 @@ routing, you will need to install the new zend-mvc-console package:</p>
                         <ul class="subnavigation__list">
                             
                                 
-    <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">V2 to V3</a>
+    <li class="subnavigation__list-item ">
+        <a href="/migration/v2-to-v3/" class="subnavigation__link">V2 to V3</a>
     </li>
 
                             
@@ -404,11 +301,11 @@ routing, you will need to install the new zend-mvc-console package:</p>
 </footer>
 
     <script>
-        var base_url = '../..',
+        var base_url = '/',
             siteName = 'zend-router';
     </script>
-    <script src="../../js/scripts-8d7ae56abf.js"></script>
-        <script src="../../search/main.js"></script>
+    <script src="//js/scripts-8d7ae56abf.js"></script>
+        <script src="/search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
