@@ -275,10 +275,9 @@ the zend-mvc component. With v3, the namespace was changed to <code>Zend\Router<
 namespace, you will need to update your code. You can do so by running a script
 such as the following (assumes *nix-based operating system such as Mac OS X or
 Linux):</p>
-<pre class="codehilite"><code class="language-bash">$ for code in $(grep -rl 'Zend.Mvc.Router' .);do
+<p> <pre class=codehilite><code class=language-bash>$ for code in $(grep -rl 'Zend.Mvc.Router' .);do
 &gt; sed --in-place -e 's/Zend\\Mvc\\Router/Zend\\Router/g' ${code}
-&gt; done</code></pre>
-
+&gt; done</code></pre></p>
 <p>The above recursively lists files that use the old namespace, and then edits
 them in place to replace the old namespace with the new one.</p>
 <p>(Make sure you don't do this at your project root, as that could also change the
@@ -286,7 +285,7 @@ files under your <code>vendor/</code> tree, which you almost certainly do not wa
 <h2 id="console-routes">Console routes</h2>
 <p>Console routing was removed from zend-router for version 3. If you use console
 routing, you will need to install the new zend-mvc-console package:</p>
-<pre class="codehilite"><code class="language-bash">$ composer require zendframework/zend-mvc-console</code></pre>
+<p> <pre class=codehilite><code class=language-bash>$ composer require zendframework/zend-mvc-console</code></pre></p>
 
 
 
@@ -316,7 +315,7 @@ routing, you will need to install the new zend-mvc-console package:</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-router/edit/master/docs/migration/v2-to-v3.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-router/edit/master/docs/book/migration/v2-to-v3.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
