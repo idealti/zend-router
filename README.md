@@ -1,5 +1,9 @@
 # zend-router
 
+> ## Repository abandoned 2019-12-31
+>
+> This repository has moved to laminas/laminas-router.
+
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-router.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-router)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-router/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-router?branch=master)
 
